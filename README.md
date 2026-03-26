@@ -16,6 +16,8 @@ And, even with all those hours and efforts put into figuring things out, I would
 
 So, understanding how difficult it was and how much these challenges are a basis on which to acquire knowledge and learn new skills, I enjoyed the process much more. It did not make me go faster, it did not make me any better, but it made me more resilient and helped me in not giving up.
 
-So, after going through all those efforts to come with thorough solutions, installing the necessary environments, learning the various vulnerabilities, learning the various tools of the trade, I thought that I could not let all those efforts be forgotten. So I thought that investing in producing thorough write-ups would be worth it. So I created this repository. Just like I have a repository about me solving the challenges of Advent of code 2024.
+So, after going through all those efforts to come with thorough solutions, installing the necessary environments, learning the various vulnerabilities, learning the various tools of the trade, I thought that I could not let all those efforts be forgotten. So I thought that investing in producing thorough write-ups would be worth it. So I created this repository. Just like I have a repository about solving the challenges of Advent of code 2024.
 
 All of those write-ups are fully released in the public domain. I am really proud of the open source culture in the IT world. This allows the field to evolve very fast. And, ultimately, this is a huge benefit to humanity.
+
+However, I am not reproducing the challenge description and inserting the challenge materials in this repository.
