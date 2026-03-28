@@ -80,14 +80,34 @@ next
 I went through the code line by line countless of times to properly identify the line showed above. It turned out to be this one:
 
 ```
-    frame #0: 0x0000555555555677 system.out`main + 679
+    frame #0: 0x000055555555567e system.out`main + 686
 system.out`main:
-->  0x555555555677 <+679>: movq   %rax, -0xf0(%rbp)
-    0x55555555567e <+686>: movq   -0xf0(%rbp), %rax
+->  0x55555555567e <+686>: movq   -0xf0(%rbp), %rax
     0x555555555685 <+693>: cmpq   -0xf8(%rbp), %rax
     0x55555555568c <+700>: jne    0x55555555572a            ; <+858>
+    0x555555555692 <+706>: leaq   0xa60(%rip), %rax
 ```
 
-The value that we must read is exactly `-0xf8(%rbp)`.
+The value that we must read is exactly `-0xf0(%rbp)`.
 
 Also this step took me a long time to figure out. How to read this value.
+
+It turns out that the following command returns the right value:
+
+```
+memory read --format u --size 8 --count 1 $rbp-0xf0
+```
+
+Format u means unsigned. Size 8 means 8 bytes. Count 1 means that it will print the first 8 bytes.
+
+This commands matches with the hash function provided by Binary Ninja, where it returns an uint64:
+
+```cpp
+int64_t hash(char* arg1)
+```
+
+The command outputs the following:
+
+```
+0x7fffffffdd90: 15237662580160011234
+```
