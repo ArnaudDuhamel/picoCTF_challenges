@@ -52,3 +52,42 @@ main
 This confirmed that these function names were right and they were actually present in the binary code.
 
 I was now ready to use LLDB on the binary file of the challenge.
+
+The first step is to load the binary in lldb:
+
+```
+lldb ./challenge_binary_file
+```
+
+The next step was to set breakpoints. In my case, only a breakpoint at the hash function was needed:
+
+```
+b hash
+```
+
+We then start running the program:
+
+```
+run
+```
+
+And then we can go through the assembly code line by line after reaching the breakpoint with this command:
+
+```
+next
+```
+
+I went through the code line by line countless of times to properly identify the line showed above. It turned out to be this one:
+
+```
+    frame #0: 0x0000555555555677 system.out`main + 679
+system.out`main:
+->  0x555555555677 <+679>: movq   %rax, -0xf0(%rbp)
+    0x55555555567e <+686>: movq   -0xf0(%rbp), %rax
+    0x555555555685 <+693>: cmpq   -0xf8(%rbp), %rax
+    0x55555555568c <+700>: jne    0x55555555572a            ; <+858>
+```
+
+The value that we must read is exactly `-0xf8(%rbp)`.
+
+Also this step took me a long time to figure out. How to read this value.
