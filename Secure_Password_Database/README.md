@@ -187,3 +187,8 @@ After the user submits a password and indicates how many bytes his password has,
 
 The make_secret function then performs the same XOR operation on the obf_bytes variable and insert the result in the empty char array that it received as parameter.
 
+It then submits this char array with the unobfuscated password, `iUbh81!j*hn!`, to the hash function. Which then turn returns `15237662580160011234`.
+
+This hash is compared with the hash value submitted by the user and if it is the same, the flag is revealed.
+
+I recrerated both the `make_secret` and the `hash` function.
