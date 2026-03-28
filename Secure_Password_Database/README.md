@@ -128,3 +128,26 @@ Could not open flag.txt: No such file or directory
 ```
 
 In the example, the flag was not revealed because I did not run the binary in the challenge environment.
+
+### 4. Recreating the code
+
+After I found the answer, I set myself on recreating the code. A code that would input the appropriate value and return the hash that would reveal the flag. Having an answer to test my code against made it much easier.
+
+But before achieving that, I needed to understand the decompiled code. So I went back to that.
+
+The first clue came from ChatGPT itself. It pointed to the string `heartbleed.c` and that this was a clue pointing to reading what is in the variable storing the password input.
+
+To do that, one enters a short password. 1 character is enough. And then when the programs asks how many bytes the password has, enter a big number, like 100. This will return the submitted password and the secret value stored in the password variable. It will be returned as integers. Like this:
+
+```
+Please set a password for your account:
+a
+How many bytes in length is your password?
+100
+You entered: 100
+Your successfully stored password:
+97 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 105 85 98 104 56 49 33 106 42 104 110 33 -86 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Enter your hash to access your account!
+```
+
+The secret value we are looking for is `105 85 98 104 56 49 33 106 42 104 110 33`.
