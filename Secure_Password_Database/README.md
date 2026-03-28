@@ -151,3 +151,26 @@ Enter your hash to access your account!
 ```
 
 The secret value we are looking for is `105 85 98 104 56 49 33 106 42 104 110 33`.
+
+Converting them to their ASCII value gives out the following password: `iUbh81!j*hn!`.
+
+And then one needs to apply the djb2 hash algorithm:
+
+```c++
+uint64_t myHash(unsigned char* input){
+
+  uint64_t hash = 5381;
+  
+  for (int i = 0; *(input + i) != 0; i++)
+    hash = *(input + i) + hash * 33;
+    
+  return hash;
+
+}
+```
+
+This will consistently return `15237662580160011234`.
+
+As my last step in the challenge, I wanted to fully understand the binary code and reverse engineer the process leading to the right hash.
+
+This also involved a lot of time, effort and not least, a lot of help fromm ChatGPT.
