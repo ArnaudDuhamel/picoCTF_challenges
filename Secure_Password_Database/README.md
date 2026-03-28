@@ -111,3 +111,20 @@ The command outputs the following:
 ```
 0x7fffffffdd90: 15237662580160011234
 ```
+
+This then reveals the flag:
+
+```
+Please set a password for your account:
+a
+How many bytes in length is your password?
+100
+You entered: 100
+Your successfully stored password:
+97 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 105 85 98 104 56 49 33 106 42 104 110 33 -86 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Enter your hash to access your account!
+15237662580160011234
+Could not open flag.txt: No such file or directory
+```
+
+In the example, the flag was not revealed because I did not run the binary in the challenge environment.
