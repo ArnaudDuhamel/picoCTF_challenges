@@ -174,3 +174,16 @@ This will consistently return `15237662580160011234`.
 As my last step in the challenge, I wanted to fully understand the binary code and reverse engineer the process leading to the right hash.
 
 This also involved a lot of time, effort and not least, a lot of help fromm ChatGPT.
+
+And so it turns out that the code starts with a hard-coded char array named `obf_bytes`. It is a global variable.
+
+The first thing the binary does it perform a XOR operation on obf_bytes with the following bits: `10101010` (170 in decimal).
+
+And so to obtain the obfuscated value, we only need to perform the same XOR operation on the de-obfuscated value. And this gives the following integers: `195 255 200 194 146 155 139 192 128 194 196 139`.
+
+The binary then insert the manipulated characters at around index 60 of the variable created to contain the user submitted password. obf_bytes remains with its starting value.
+
+After the user submits a password and indicates how many bytes his password has, the code creates an empty char array and runs the `make_secret` function with the empty char array.
+
+The make_secret function then performs the same XOR operation on the obf_bytes variable and insert the result in the empty char array that it received as parameter.
+
