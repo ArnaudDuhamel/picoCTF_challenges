@@ -1,6 +1,5 @@
 #include "out.h"
 
-
 undefined __libc_csu_init;
 undefined __libc_csu_fini;
 undefined main;
