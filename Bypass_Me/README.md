@@ -96,4 +96,4 @@ The decoding is the same as for the Secure Password Database challenge. It perfo
 
 To find the encoded password, I performed the same XOR operation on the "SuperSecure" string.
 
-This gives the following encoded values, represented in ASCII integers: `{249, 223, 218, 207, 216, 249, 207, 201, 223, 216, 207, 170}`.
+This gives the following encoded values in ASCII integers: `{249, 223, 218, 207, 216, 249, 207, 201, 223, 216, 207, 170}`.
