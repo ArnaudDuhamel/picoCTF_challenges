@@ -29,6 +29,7 @@ int main() {
 
     unsigned char inputObf[] = {195, 255, 200, 194, 146, 155, 139, 192, 128, 194, 196, 139};
 
+    //unsigned char inputNotObf[] = "iUbh81!j*hn!";
     unsigned char inputNotObf[] = {105, 85, 98, 104, 56, 49, 33, 106, 42, 104, 110, 33, 0};
     
     cout << "Hash after unobfuscating input in makeSecret function: " <<  makeSecret(inputObf) << endl;
