@@ -9,7 +9,6 @@ int main()
 
     cout << "What's the secret?: ";
     cin >> userInput;
-    cout << userInput << endl;
     
     if (userInput != secret)
         puts("Nice try :(");
