@@ -68,7 +68,7 @@ So I had not other choice but to actually figure out the cipher and the key.
 
 For the cipher, the relevant piece of code is this one:
 
-```
+```cpp
 while (count > var_2c_1)
 {
     printf("%02x", *(&s.0 + var_2c_1 % 6) ^ *(buf + var_2c_1), "%02x");
@@ -88,7 +88,7 @@ And one fact needed to solve the challenge is to understand that the cipher outp
 
 The key is hardcoded as follows in the get_secret function:
 
-```
+```cpp
 *s.0 = 0x53;
 *(s.0 + 1) = 0x33;
 *(s.0 + 2) = 0x43;
@@ -116,3 +116,21 @@ First separate the hex values in pairs of two: 0x23, 0x5a, 0x20, 0x1d, 0x70, 0x2
 ### 6. Recreating the code
 
 I recreated the encryption/decryption part of the code.
+
+To decrypt the flag from my code after receiving the input, one can replace the flag in plain text with the hex values, and then output the decrypted value:
+
+```cpp
+vector<unsigned char> codedFlag = {0x23, 0x5a, 0x20, 0x1d, 0x70, 0x20, 0x15};
+
+vector<unsigned char> decodedFlag = decodeFlag(codedFlag);
+
+cout << "Decoded flag: ";
+
+for (unsigned char i: decodedFlag)
+    cout  << i;
+                 
+cout << endl;
+
+// Final output:
+// Decoded flag: picoCTF
+```
