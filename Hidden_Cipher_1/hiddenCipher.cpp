@@ -4,19 +4,19 @@
 
 using namespace std;
 
-vector<unsigned char> decodeFlag(vector<unsigned char> codedPassword){
+vector<unsigned char> decodeFlag(vector<unsigned char> codedFlag){
     
     vector<int> key = {83, 51, 67, 114, 51, 116};
 
-    int codedPasswordLength = codedPassword.size();
+    int codedFlagLength = codedFlag.size();
     int keyLength = key.size();
 
     // The modulo symbol in the key index makes the final index loop between 0 and 5
     // even though i goes higher then 5.
-    for (int i = 0; i < codedPasswordLength; i++)
-        codedPassword[i] ^= key[i % keyLength];
+    for (int i = 0; i < codedFlagLength; i++)
+        codedFlag[i] ^= key[i % keyLength];
     
-    return codedPassword;
+    return codedFlag;
 }
 
 int main() {
