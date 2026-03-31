@@ -70,10 +70,10 @@ For the cipher, the relevant piece of code is this one:
 
 ```
 while (count > var_2c_1)
-    {
-        printf("%02x", *(&s.0 + var_2c_1 % 6) ^ *(buf + var_2c_1), "%02x");
-        var_2c_1 += 1;
-    }
+{
+    printf("%02x", *(&s.0 + var_2c_1 % 6) ^ *(buf + var_2c_1), "%02x");
+    var_2c_1 += 1;
+}
 ```
 
 But reading multiple times the decompiled code, I could understand that `*(buf + var_2c_1)` are each character of the flag string. `*(&s.0 + var_2c_1 % 6)` is each value of the key.
@@ -81,6 +81,37 @@ But reading multiple times the decompiled code, I could understand that `*(buf +
 So the loop traverses only one time the flag string. And the key loops continuously from 0 to 5 through the whole flag string. That is achieved with `% 6`.
 
 And it turns out this is a XOR operation based on the `^` operator.
+
+So the cipher is performing a XOR operation on each character of the flag with a value of the key.
+
+And one fact needed to solve the challenge is to understand that the cipher outputs hex values, that each have at most 2 hex numbers, and padded by a 0 if needed. This is indicated by `"%02x"` in the printf function. I got this information completely from ChatGPT.
+
+The key is hardcoded as follows in the get_secret function:
+
+```
+*s.0 = 0x53;
+*(s.0 + 1) = 0x33;
+*(s.0 + 2) = 0x43;
+*(s.0 + 3) = 0x72;
+*(s.0 + 4) = 0x33;
+*(s.0 + 5) = 0x74;
+```
+
+So, to decrypt the flag, starting for example from this encrypted value: 235a201d702015.
+
+One would need to do the following:
+
+First separate the hex values in pairs of two: 0x23, 0x5a, 0x20, 0x1d, 0x70, 0x20, 0x15.
+
+| Flag char (hex) | Bit operation | Key value | Output char |
+|-----------------|---------------|-----------|-------------|
+| 0x23            | XOR (^)       | 0x53      | p           |
+| 0x5a            | XOR (^)       | 0x33      | i           |
+| 0x20            | XOR (^)       | 0x43      | c           |
+| 0x1d            | XOR (^)       | 0x72      | o           |
+| 0x70            | XOR (^)       | 0x33      | C           |
+| 0x20            | XOR (^)       | 0x74      | T           |
+| 0x15            | XOR (^)       | 0x53      | F           |
 
 ### 6. Recreating the code
 
