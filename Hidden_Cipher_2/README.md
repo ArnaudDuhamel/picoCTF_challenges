@@ -22,7 +22,7 @@ I used [Decompiler Express](https://dogbolt.org/).
 
 I worked with two decompilers: Ghydra & Binary Ninja. The output of each decompiler is included in the folder.
 
-### 5. Figuring out the cipher and they
+### 3. Figuring out the cipher and they
 
 For the cipher, the first important lines of code are those ones (from Binary Ninja output):
 
@@ -62,6 +62,6 @@ So the cipher is the multiplication, and the key is the answer to the math quest
 
 To decipher the flag, one must then divide the numbers received by the program by the answer to the math question.
 
-### 6. Recreating the code
+### 4. Recreating the code
 
 I created a script that deciphers a provided set of integers into a fake flag with the method described above.
