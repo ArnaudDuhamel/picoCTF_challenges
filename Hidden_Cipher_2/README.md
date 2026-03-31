@@ -56,5 +56,12 @@ int64_t encode_flag(void* arg1, int32_t arg2)
         printf("%d", *(arg1 + var_c) * arg2, &data_40201d);
 ```
 
+A loop goes through all the characters of the flag and multiplies them by the answer to the math question.
+
+So the cipher is the multiplication, and the key is the answer to the math question. 
+
+To decipher the flag, one must then divide the numbers received by the program by the answer to the math question.
+
 ### 6. Recreating the code
 
+I created a script that deciphers a provided set of integers into a fake flag with the method described above.
