@@ -17,6 +17,8 @@ void revealFlag(){
     
     getline(flagFile,flag);
 
+    // Prints the flag in reverse and prints "ftc_oc_ip" at every
+    // index being a factor of 4.
     for (int i = flag.length() - 1; i >= 0; i--){
 
         cout << flag[i];
@@ -35,6 +37,7 @@ void decodeFlag(string flag){
     string from = "ftc_oc_ip";
     string to = "";
 
+    // Goes through the flag string and removes ftc_oc_ip occurences. 
     size_t pos = 0;
     while ((pos = flag.find(from, pos)) != string::npos) {
         flag.replace(pos, from.length(), to);
