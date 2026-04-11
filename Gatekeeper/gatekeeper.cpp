@@ -17,7 +17,7 @@ void revealFlag(){
     
     getline(flagFile,flag);
 
-    for (int i = flag.size() - 1; i >= 0; i--){
+    for (int i = flag.length() - 1; i >= 0; i--){
 
         cout << flag[i];
 
@@ -30,15 +30,28 @@ void revealFlag(){
      
 }
 
-string decodeFlage(string flag){
+void decodeFlag(string flag){
 
-    
+    string from = "ftc_oc_ip";
+    string to = "";
+
+    size_t pos = 0;
+    while ((pos = flag.find(from, pos)) != string::npos) {
+        flag.replace(pos, from.length(), to);
+        pos += to.length();  // move past replacement
+    }
+
+    reverse(flag.begin(),flag.end());
+
+    cout << flag << endl;
 
 }
 
 int main() {
 
     revealFlag();
+
+    decodeFlag("}gftc_oc_ipalf_ftc_oc_ipekafftc_oc_ip{FTCftc_oc_ipocipftc_oc_ip");
     
     return 0;
 }
