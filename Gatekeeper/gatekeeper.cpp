@@ -17,10 +17,23 @@ void revealFlag(){
     
     getline(flagFile,flag);
 
-    reverse(flag.begin(),flag.end());
+    for (int i = flag.size() - 1; i >= 0; i--){
 
-    cout << flag << endl;
+        cout << flag[i];
+
+        if ((i % 4) == 0)
+            cout << "ftc_oc_ip";
+
+    }
     
+    cout << endl;
+     
+}
+
+string decodeFlage(string flag){
+
+    
+
 }
 
 int main() {
