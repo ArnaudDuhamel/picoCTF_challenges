@@ -45,7 +45,7 @@ These are the hex values of each byte in hexadecimal, without spaces. And at thi
 
 A more convenient way to copy is to have the data presented as C arrays:
 
-<img src="images/wireshark_4.png" width="500" height="500">
+<img src="images/wireshark_5.png" width="500" height="500">
 
 I copied all the arrays, and turned it into one vector of unsigned characters.
 
